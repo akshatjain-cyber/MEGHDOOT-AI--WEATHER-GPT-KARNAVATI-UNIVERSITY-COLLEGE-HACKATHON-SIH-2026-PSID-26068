@@ -1,0 +1,307 @@
+IMPORTANT: DO NOT MODIFY, REFACTOR, REMOVE, OR BREAK ANYTHING OUTSIDE THE AI SECTION.
+
+The geofence, rescue area, location functionality, and all other existing sections are already working perfectly. LEAVE THEM EXACTLY AS THEY ARE.
+
+Our ONLY current target is to significantly improve the AI section / Meghdoot AI experience shown in the current UI.
+
+Please inspect the existing implementation first, then make the improvements below carefully and incrementally.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. FIX THE AI UI SPACING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+In the Meghdoot AI section, below:
+
+"Ask anything about Sabarmati, Asarva Taluka, Ahmedabad"
+
+there are the three small circular indicators/buttons (red, green, yellow).
+
+They are currently colliding/overlapping and look congested.
+
+Fix ONLY the layout of this AI area so that:
+- The three indicators have proper spacing.
+- They never overlap or collide.
+- They are visually balanced and aligned.
+- Maintain the existing design language.
+- Make the spacing responsive so it remains clean on different screen sizes.
+- Do not redesign unrelated parts of the application.
+
+The result should look intentional, polished, spacious, and production-quality.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. IMPROVE TEXT-TO-SPEECH CONTROLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Improve the AI answer text-to-speech experience.
+
+When the AI generates an answer and TTS is available, provide clear controls for:
+
+- ▶ / Pause
+- Replay
+- 🔇 Mute / Unmute
+
+The controls should be intuitive and should NOT interfere with the answer text.
+
+Required behavior:
+
+PLAY:
+Starts reading the current AI answer aloud.
+
+PAUSE:
+Pauses speech at the current position.
+
+RESUME:
+Continues from the paused position instead of restarting.
+
+REPLAY:
+Restarts the current answer from the beginning.
+
+MUTE / UNMUTE:
+Allows the user to silence/restore speech.
+
+STOP/cleanup:
+When navigating away, generating a new answer, or changing the current response, properly stop/cleanup the previous speech so multiple voices never play simultaneously.
+
+Also handle:
+- Browser TTS errors
+- Unsupported browsers
+- Missing voices
+- Long AI responses
+- Rapidly clicking controls
+- Generating a new answer while TTS is playing
+
+Do not allow duplicate speech instances.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. SUPPORT INDIAN LANGUAGES — ESPECIALLY GUJARATI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This is important.
+
+I want the AI/TTS system to support Gujarati and other Indian languages wherever technically possible.
+
+Prioritize:
+
+- Gujarati
+- Hindi
+- Marathi
+- Bengali
+- Tamil
+- Telugu
+- Kannada
+- Malayalam
+- Punjabi
+- Odia
+- Urdu
+
+Also keep support for major international languages such as:
+- English
+- Spanish
+- French
+- German
+- etc.
+
+FIRST investigate what is already available in the current project/environment.
+
+Do NOT ask me for API keys if a free or built-in solution can be used.
+
+Since I do not currently have funds for paid APIs:
+
+PRIORITY 1:
+Use free browser-native SpeechSynthesis / available system voices if they support the language.
+
+PRIORITY 2:
+Use a genuinely free/open-source solution that can run within the project's existing architecture.
+
+PRIORITY 3:
+If an existing free API/service is already configured or available in the project, integrate it.
+
+Do NOT hard-code fake API keys.
+
+Do NOT expose secrets in frontend code.
+
+Do NOT invent credentials.
+
+If a language is not supported by the available browser/system voice, gracefully fall back to another available voice or clearly indicate that TTS is unavailable for that language.
+
+Gujarati TTS is especially important. Make the implementation actually attempt Gujarati language/voice selection using the appropriate locale such as gu-IN when supported.
+
+Also make sure Devanagari and other Indian scripts render correctly in the UI.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. MAKE THE AI ANSWERS FEEL HUMAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This is one of the MOST IMPORTANT requirements.
+
+Our AI currently sounds too much like a generic robotic AI assistant.
+
+Improve the AI response generation so answers feel:
+
+- Natural
+- Human
+- Conversational
+- Intelligent
+- Context-aware
+- Helpful
+- Concise when the question is simple
+- Detailed when the question genuinely requires detail
+- Locally aware
+- Less repetitive
+- Less formulaic
+
+Avoid generic phrases such as:
+"Certainly!"
+"Here is a comprehensive answer..."
+"I'd be happy to help..."
+"As an AI..."
+"In conclusion..."
+
+Do not make every answer follow the same template.
+
+The AI should understand conversational context.
+
+For example, if the user asks:
+
+"What should I know about the next 6 hours?"
+
+The answer should feel like a knowledgeable local assistant explaining what actually matters, rather than a generic AI-generated report.
+
+Use natural language and vary sentence structure.
+
+The AI should prioritize the most useful information first.
+
+If appropriate, answers should mention relevant local context such as Sabarmati, Asarva Taluka, Ahmedabad, weather, local conditions, nearby risks, travel considerations, etc., ONLY when supported by available data.
+
+Never fabricate live information.
+
+If current/live data is unavailable, say so naturally rather than pretending.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. MAKE THE AI SMARTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Improve the AI reasoning and response pipeline wherever possible without changing unrelated application functionality.
+
+The AI should:
+
+- Understand follow-up questions.
+- Remember the context of the current conversation.
+- Avoid repeating information already given.
+- Resolve references like "there", "that", "tomorrow", "the same place", etc. from conversation context when possible.
+- Give direct answers instead of unnecessary introductions.
+- Ask a clarification only when genuinely necessary.
+- Distinguish between factual information, estimates, and uncertainty.
+- Never invent local information.
+- Use available application data intelligently.
+- Prefer actionable answers.
+- Adapt response length to the user's question.
+- Sound like a knowledgeable human assistant rather than a chatbot template.
+
+If there is already an AI system prompt/persona in the project, improve it rather than unnecessarily replacing the entire architecture.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. IMPROVE THE AI RESPONSE UI
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Keep the existing visual identity.
+
+Improve only the AI answer presentation where useful.
+
+AI answers should be:
+- Easy to scan
+- Comfortable to read
+- Properly spaced
+- Responsive
+- Visually clean
+- Suitable for both short and long answers
+
+Avoid excessive cards, borders, badges, gradients, animations, or visual clutter.
+
+The AI section should feel premium and calm.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+7. DO NOT TOUCH OTHER FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ABSOLUTELY DO NOT MODIFY:
+
+- Geofence functionality
+- Rescue area
+- Location functionality
+- Existing working map behavior
+- Existing safety functionality
+- Existing non-AI sections
+- Existing navigation
+- Existing working APIs unrelated to AI
+- Existing database behavior unrelated to AI
+
+If a change appears necessary outside the AI section, STOP and determine whether there is a way to solve the problem without touching it.
+
+The existing geofence/rescue implementation is considered LOCKED.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+8. TECHNICAL QUALITY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before making changes:
+
+1. Inspect the existing AI implementation.
+2. Identify the exact components/files responsible for:
+   - AI responses
+   - AI UI
+   - TTS
+   - language handling
+3. Make the smallest safe set of changes.
+4. Preserve existing functionality.
+5. Avoid unnecessary dependencies.
+6. Prefer free/native solutions where possible.
+7. Do not introduce paid services requiring credentials I don't have.
+8. Do not expose API keys/secrets client-side.
+9. Handle errors gracefully.
+10. Test the AI flow after changes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+9. TEST THESE CASES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+After implementation, test:
+
+✓ Normal English AI question
+✓ Follow-up question
+✓ Short answer
+✓ Long answer
+✓ Gujarati question
+✓ Hindi question
+✓ Marathi question
+✓ Spanish question
+✓ TTS play
+✓ TTS pause
+✓ TTS resume
+✓ TTS replay
+✓ TTS mute/unmute
+✓ Generate another answer while TTS is playing
+✓ TTS unavailable
+✓ Unsupported language/voice
+✓ Mobile/responsive layout
+✓ Three red/green/yellow indicators no longer collide
+✓ Existing geofence still works
+✓ Existing rescue area still works
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+10. FINAL REQUIREMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+The goal is NOT to rebuild the application.
+
+The goal is to make the existing Meghdoot AI section feel significantly more intelligent, human, polished, multilingual, and useful while leaving every other working section untouched.
+
+Before finishing, verify that the geofence and rescue functionality remain unchanged and working.
+
+Then create a NEW CHECKPOINT containing ONLY these AI improvements.
+
+Do not modify unrelated code just for the sake of cleanup.
+
+If something cannot be implemented for free, use the best available native/open-source fallback rather than stopping and asking me for money or API credentials.
+
+Proceed with the implementation.
