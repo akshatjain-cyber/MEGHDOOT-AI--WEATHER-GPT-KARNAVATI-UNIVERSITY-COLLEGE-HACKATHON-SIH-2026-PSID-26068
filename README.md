@@ -1,5 +1,8 @@
 ﻿# Meghdoot AI — Weather GPT & Rescue Command Platform
  this is URL :https://meghrescue-mb3dogk3.manus.space
+ A local host URL of VS code with GIT OAUTH and DUE TO NO API KEYS THIS AI DOESN'T RENDER ACCURATE RESPONSE
+ BUT IT WILL WORK COMPLETELY FOR WEATHER AND ALL AS API KEYS ARE NOT FOR FREE IF WE GET FUNDS WE CAN 
+ MAKE THIS AI ALSO RUN COMPLETELY YA IT IS URL:http://localhost:3000/
 
 > **Smart India Hackathon (SIH 2026)**  
 > **Problem Statement ID:** 26068  
